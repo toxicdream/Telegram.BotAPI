@@ -193,6 +193,7 @@ namespace Telegram.BotAPI
         public const string MessageAutoDeleteTimerChanged = "message_auto_delete_timer_changed ";
         public const string MessageId = "message_id";
         public const string MessageText = "message_text";
+        public const string Method = "method";
         public const string MigrateFromChatId = "migrate_from_chat_id";
         public const string MigrateToChatId = "migrate_to_chat_id";
         public const string MimeType = "mime_type";

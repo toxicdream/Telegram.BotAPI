@@ -65,7 +65,6 @@ namespace Telegram.BotAPI
         /// <summary>
         /// Extract args from the command parameters.
         /// </summary>
-        /// <param name="_">Command helper.</param>
         /// <param name="params">Command parameter string</param>
         /// <returns>An array of <see cref="string"/></returns>
         public IEnumerable<string> MatchArgs(string @params)
