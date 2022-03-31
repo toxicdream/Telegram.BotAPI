@@ -10,14 +10,11 @@ namespace Telegram.BotAPI.ReplyDirectly
     public class SendMessageReplyDirectly : SendMessageArgs, IReplyDirectlyMethod
     {
         /// <summary>Initialize a new instance of <see cref="SendMessageReplyDirectly"/>.</summary>
-        public SendMessageReplyDirectly(long chatId, string text) : base(chatId, text) 
-        {
-            Method = MethodNames.SendMessage;
-        }
+        public SendMessageReplyDirectly(long chatId, string text) : base(chatId, text) { }
 
-        /// <summary>Method property for Reply Directly</summary>
+        /// <summary>"Method" property for Reply Directly</summary>
         [JsonPropertyName(PropertyNames.Method)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Method { get; }
+        public string Method => MethodNames.SendMessage;
     }
 }
