@@ -1,53 +1,53 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
-using System;
+﻿using System;
 using System.Text.Json.Serialization;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 #nullable enable
 
 namespace Telegram.BotAPI
 {
-    /// <summary>Base object for message-sending methods arguments.</summary>
+    /// <summary>Base object for message-forwarding methods arguments.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
     public class ForwardMessageArgs : ForwardMessage<object, object>
     {
-        /// <summary>Initialize a new instance of <see cref="SendMessageBase"/>.</summary>
-        /// <param name="chatId">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
-        /// <param name="fromChatId">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
-        /// <param name="messageId">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
+        /// <summary>Initialize a new instance of <see cref="ForwardMessageArgs"/>.</summary>
+        /// <param name="chatId">Unique identifier of the target chat.</param>
+        /// <param name="fromChatId">Unique identifier of the source chat.</param>
+        /// <param name="messageId">Unique identifier of source message.</param>
         /// <exception cref="ArgumentNullException"></exception>
         public ForwardMessageArgs(long chatId, long fromChatId, int messageId) : base(chatId, fromChatId, messageId) { }
 
-        /// <summary>Initialize a new instance of <see cref="SendMessageBase"/>.</summary>
-        /// <param name="chatId">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
-        /// <param name="fromChatId">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
-        /// <param name="messageId">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
+        /// <summary>Initialize a new instance of <see cref="ForwardMessageArgs"/>.</summary>
+        /// <param name="chatId">Unique identifier of the target chat.</param>
+        /// <param name="fromChatId">Unique identifier of the source chat.</param>
+        /// <param name="messageId">Unique identifier of source message.</param>
         /// <exception cref="ArgumentNullException"></exception>
         public ForwardMessageArgs(string chatId, string fromChatId, int messageId) : base(chatId, fromChatId, messageId) { }
 
-        /// <summary>Initialize a new instance of <see cref="SendMessageBase"/>.</summary>
-        /// <param name="chatId">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
-        /// <param name="fromChatId">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
-        /// <param name="messageId">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
+        /// <summary>Initialize a new instance of <see cref="ForwardMessageArgs"/>.</summary>
+        /// <param name="chatId">Unique identifier of the target chat.</param>
+        /// <param name="fromChatId">Unique identifier of the source chat.</param>
+        /// <param name="messageId">Unique identifier of source message.</param>
         /// <exception cref="ArgumentNullException"></exception>
         public ForwardMessageArgs(long chatId, string fromChatId, int messageId) : base(chatId, fromChatId, messageId) { }
 
-        /// <summary>Initialize a new instance of <see cref="SendMessageBase"/>.</summary>
-        /// <param name="chatId">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
-        /// <param name="fromChatId">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
-        /// <param name="messageId">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
+        /// <summary>Initialize a new instance of <see cref="ForwardMessageArgs"/>.</summary>
+        /// <param name="chatId">Unique identifier of the target chat.</param>
+        /// <param name="fromChatId">Unique identifier of the source chat.</param>
+        /// <param name="messageId">Unique identifier of source message.</param>
         /// <exception cref="ArgumentNullException"></exception>
         public ForwardMessageArgs(string chatId, long fromChatId, int messageId) : base(chatId, fromChatId, messageId) { }
     }
 
-    /// <summary>Base object for message-sending methods arguments.</summary>
+    /// <summary>Base object for message-forwarding methods arguments.</summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn, NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
     public abstract class ForwardMessage<TChatId, TFromChatId>
     {
-        /// <summary>Initialize a new instance of <see cref="SendMessageBase"/>.</summary>
-        /// <param name="chatId">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
-        /// <param name="fromChatId">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
-        /// <param name="messageId">Unique identifier for the target chat or username of the target channel (in the format @channelusername).</param>
+        /// <summary>Initialize a new instance of <see cref="ForwardMessageArgs"/>.</summary>
+        /// <param name="chatId">Unique identifier of the target chat.</param>
+        /// <param name="fromChatId">Unique identifier of the source chat.</param>
+        /// <param name="messageId">Unique identifier of source message.</param>
         /// <exception cref="ArgumentNullException"></exception>
         protected ForwardMessage(TChatId chatId, TFromChatId fromChatId, int messageId)
         {
@@ -56,12 +56,12 @@ namespace Telegram.BotAPI
             MessageId = messageId;
         }
 
-        ///<summary><see cref="long"/> or <see cref="string"/>. Unique identifier for the target chat or username of the target channel (in the format @channelusername).</summary>
+        ///<summary><see cref="long"/> or <see cref="string"/>. Unique identifier for the target chat.</summary>
         [JsonPropertyName(PropertyNames.ChatId)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public virtual TChatId ChatId { get; set; }
 
-        ///<summary><see cref="long"/> or <see cref="string"/>. Unique identifier for the target chat or username of the target channel (in the format @channelusername).</summary>
+        ///<summary><see cref="long"/> or <see cref="string"/>. Unique identifier of the source chat.</summary>
         [JsonPropertyName(PropertyNames.FromChatId)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public virtual TFromChatId FromChatId { get; set; }
